@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 import { API_URL, DASHBOARD_URL } from "../config";  // the port your dashboard runs on
 
 function Signup() {
