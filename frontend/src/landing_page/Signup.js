@@ -14,7 +14,7 @@ function Signup() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post(`${API}/signup`, form, { withCredentials: true });
+      await axios.post(`${API_URL}/signup`, form, { withCredentials: true });
       window.location.href = DASHBOARD_URL;     // cookie is set, go to the dashboard
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");

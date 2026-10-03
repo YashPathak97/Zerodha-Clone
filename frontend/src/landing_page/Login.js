@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 import { Link } from "react-router-dom";
 import { API_URL, DASHBOARD_URL } from "../config";
 
@@ -14,7 +15,7 @@ function Login() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post(`${API}/login`, form, { withCredentials: true });
+      await axios.post(`${API_URL}/login`, form, { withCredentials: true });
       window.location.href = DASHBOARD_URL;
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
