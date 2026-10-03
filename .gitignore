@@ -1,0 +1,9 @@
+@"
+node_modules/
+build/
+dist/
+.env
+.env.*
+.DS_Store
+npm-debug.log*
+"@ | Set-Content -Encoding ascii .gitignore
