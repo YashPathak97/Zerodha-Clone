@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+import { API_URL } from "../config";
 
 // import { holdings } from "../data/data";
 // useffect hook is used to fetch the holdings data from the backend API and set it to the state variable allHoldings. The data is then used to create a vertical bar graph using the VerticalGraph component. The table displays the holdings data with calculated current value, profit/loss, and net change for each stock.
@@ -11,7 +12,7 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    axios.get(`${API_URL}/allHoldings`).then((res) => {
       setAllHoldings(res.data);
     });
   }, []);

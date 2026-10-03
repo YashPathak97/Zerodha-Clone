@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { API_URL } from "../config";
 
 import GeneralContext from "./GeneralContext";
 import "./BuyActionWindow.css";
@@ -11,7 +12,7 @@ const BuyActionWindow = ({ uid }) => {
 
 const handleBuyClick = () => {
   axios
-    .post("http://localhost:3002/newOrder", {
+    .post(`${API_URL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

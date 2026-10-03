@@ -1,11 +1,14 @@
 
 import React, { useEffect, useState } from "react";
+import { API_URL } from "../config";
+import { FRONTEND_URL } from "../config";
+
 
 function RequireAuth({ children }) {
   const [authorized, setAuthorized] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3002/me", {
+    fetch(`${API_URL}/me`, {
       credentials: "include",
     })
       .then((response) => {
@@ -32,7 +35,7 @@ function RequireAuth({ children }) {
               className="btn btn-primary mt-3"
               style={{ borderRadius: "10%" }}
               onClick={() => {
-                window.location.href = "http://localhost:3001/login";
+                window.location.href = `${FRONTEND_URL}/login`;
               }}
             >
               Go to Login

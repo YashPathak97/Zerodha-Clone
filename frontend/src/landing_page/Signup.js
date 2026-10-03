@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API = "http://localhost:3002";
-const DASHBOARD_URL = "http://localhost:3001";   // the port your dashboard runs on
+import { Link } from "react-router-dom";
+import { API_URL, DASHBOARD_URL } from "../config";  // the port your dashboard runs on
 
 function Signup() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
