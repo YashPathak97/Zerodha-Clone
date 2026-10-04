@@ -35,7 +35,7 @@ function Signup() {
 
       console.log("Signup successful:", response.data);
 
-      window.location.assign(DASHBOARD_URL);
+      window.location.assign("https://zerodha-clone-frontend-zj8o.onrender.com/");
     } catch (err) {
       console.error("Signup error:", err);
 
