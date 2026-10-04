@@ -9,7 +9,7 @@ import { API_URL } from "../config";
   
 useEffect(() => {
   axios
-    .get(`${API_URL}/allHoldings/allPositions`)
+    .get(`${API_URL}/allPositions`)
     .then((res) => {
       console.log("Positions data:", res.data);
       setAllPositions(
