@@ -295,9 +295,18 @@ app.post("/login", async (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-    res.clearCookie("token");
-    res.json({ message: "Logged out" });
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+  });
+
+  return res.status(200).json({
+    message: "Logout successful",
+  });
 });
+
 
 app.get("/me", auth, async (req, res) => {
     const user = await UsersModel.findById(req.user.userId).select("username email role");
