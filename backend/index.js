@@ -47,7 +47,8 @@ app.use(cors({
     origin: [
         "http://localhost:3000",
         "http://localhost:3001",
-        "https://zerodha-clone-frontend-zj8o.onrender.com"
+        "https://zerodha-clone-frontend-zj8o.onrender.com",
+        "https://zerodha-clone-dashboard-x3t1.onrender.com"
     ],
     credentials: true
 }));

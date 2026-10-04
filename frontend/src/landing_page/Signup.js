@@ -1,59 +1,105 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-import { API_URL, DASHBOARD_URL } from "../config";  // the port your dashboard runs on
+import { API_URL, DASHBOARD_URL } from "../config";
 
 function Signup() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
-  const [error, setError] = useState("");
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: ""
+  });
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
+
     try {
-      await axios.post(`${API_URL}/signup`, form, { withCredentials: true });
-      window.location.href = DASHBOARD_URL;     // cookie is set, go to the dashboard
+      const response = await axios.post(
+        `${API_URL}/signup`,
+        form,
+        { withCredentials: true }
+      );
+
+      console.log("Signup successful:", response.data);
+
+      window.location.assign(DASHBOARD_URL);
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
+      console.error("Signup error:", err);
+
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        "Signup failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="container" style={{ maxWidth: 400, marginTop: 80 }}>
       <h3>Sign up</h3>
+
       <form onSubmit={handleSubmit}>
         <input
           className="form-control mb-3"
           name="username"
           placeholder="Username"
+          value={form.username}
           onChange={handleChange}
           required
         />
+
         <input
           className="form-control mb-3"
           type="email"
           name="email"
           placeholder="Email"
+          value={form.email}
           onChange={handleChange}
           required
         />
+
         <input
           className="form-control mb-3"
           type="password"
           name="password"
           placeholder="Password (6+ characters)"
           minLength={6}
+          value={form.password}
           onChange={handleChange}
           required
         />
-        {error && <p className="text-danger">{error}</p>}
-        <button className="btn btn-primary w-100">Create account</button>
+
+        {error && (
+          <p className="text-danger">{error}</p>
+        )}
+
+        <button
+          className="btn btn-primary w-100"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? "Creating account..." : "Create account"}
+        </button>
       </form>
+
       <p className="mt-3">
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account?{" "}
+        <Link to="/login">Login</Link>
       </p>
     </div>
   );
