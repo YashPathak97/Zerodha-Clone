@@ -15,7 +15,6 @@ import Login from './landing_page/Login';
 import Signup from './landing_page/Signup';
 import ScrollToTop from './landing_page/ScrollToTop';
 import KiteRedirect from "./KiteRedirect";
-import { Navigate } from "react-router-dom";
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
@@ -24,22 +23,19 @@ if ("scrollRestoration" in window.history) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <ScrollToTop>
+    <ScrollToTop />
     <Navbar />
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path='/' element={<HomePage/>}></Route>
-      <Route path='/signup' element={<Signup/>}></Route>
-      <Route path='/about' element={<AboutPage/>}></Route>
-      <Route path='/product' element={<ProductPage/>}></Route>
-      <Route path='/pricing' element={<PricingPage/>}></Route>
-      <Route path='/support' element={<SupportPage/>}></Route>
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/product" element={<ProductPage />} />
+      <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/support" element={<SupportPage />} />
       <Route path="/kite" element={<KiteRedirect />} />
-      <Route path='*' element={<NotFound/>}></Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
-  </ScrollToTop>
   </BrowserRouter>
 );
-
