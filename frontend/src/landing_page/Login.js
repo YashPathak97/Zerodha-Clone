@@ -32,7 +32,7 @@ function Login() {
       );
 
       // Login successful: open Dashboard
-      window.location.assign(DASHBOARD_URL);
+      window.location.assign("https://zerodha-clone-frontend-zj8o.onrender.com");
     } catch (err) {
       console.error("Login error:", err);
 

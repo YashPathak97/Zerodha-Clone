@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
-import axios, { all } from "axios";
+import axios from "axios";
 import { API_URL } from "../config";
 
-import { positions } from "../data/data";
+//import { positions } from "../data/data";
 
   const Positions = () => {
     const [allPositions, setAllPositions] = useState([]);
   
-    useEffect(() => {
-      axios.get(`${API_URL}/allHoldings/allPositions`).then((res) => {
-        setAllPositions(res.data);
-      });
-    }, []);
+useEffect(() => {
+  axios
+    .get(`${API_URL}/allHoldings/allPositions`)
+    .then((res) => {
+      console.log("Positions data:", res.data);
+      setAllPositions(
+        Array.isArray(res.data) ? res.data : res.data.positions || []
+      );
+    })
+    .catch((err) => {
+      console.error("Positions error:", err.response?.data || err.message);
+    });
+}, []);
+
 
   return (
     <>
