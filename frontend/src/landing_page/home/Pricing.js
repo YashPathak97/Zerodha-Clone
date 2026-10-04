@@ -10,7 +10,7 @@ function Pricing() {
                        price transparency in India. Flat fees and no hidden changes.
                     </p>
                     <div>
-                        <a href='' style={{textDecoration: 'none'}}>See pricing <i className="fas fa-long-arrow-alt-right"></i></a>
+                        <a href='/pricing' style={{textDecoration: 'none'}}>See pricing <i className="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </div>
 

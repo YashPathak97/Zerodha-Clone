@@ -31,8 +31,8 @@ function Stats() {
                 <div className='col-6 p-5'>
                     <img src='media/images/ecosystem.png' className='img-fluid' style={{width: "95%"}}></img>
                     <div className='text-center'>
-                        <a className="mx-5" style={{textDecoration:'none'}} href=''>Explore our products <i className="fas fa-long-arrow-alt-right"></i></a>
-                        <a href='' style={{textDecoration:'none'}}>Try Kite demo <i className="fas fa-long-arrow-alt-right"></i></a>
+                        <a className="mx-5" style={{textDecoration:'none'}} href='/product'>Explore our products <i className="fas fa-long-arrow-alt-right"></i></a>
+                        <a href='https://zerodha-clone-dashboard-x3t1.onrender.com' style={{textDecoration:'none'}}>Try Kite demo <i className="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </div>
             </div>

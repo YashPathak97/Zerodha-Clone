@@ -13,13 +13,18 @@ import Footer from './landing_page/Footer';
 import NotFound from './landing_page/NotFound';
 import Login from './landing_page/Login';
 import Signup from './landing_page/Signup';
-
+import ScrollToTop from './landing_page/ScrollToTop';
 import KiteRedirect from "./KiteRedirect";
 import { Navigate } from "react-router-dom";
+
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+  <ScrollToTop>
     <Navbar />
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -32,9 +37,9 @@ root.render(
       <Route path='/support' element={<SupportPage/>}></Route>
       <Route path="/kite" element={<KiteRedirect />} />
       <Route path='*' element={<NotFound/>}></Route>
-
     </Routes>
     <Footer />
+  </ScrollToTop>
   </BrowserRouter>
 );
 
