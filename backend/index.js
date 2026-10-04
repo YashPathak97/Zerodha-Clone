@@ -19,9 +19,9 @@ const { auth } = require("./middlewares/auth");
 // cookie settings used by signup and login
 const cookieOptions = {
     httpOnly: true,
-    sameSite: "lax",
-    secure: false,                      // set true when you deploy on https
-    maxAge: 24 * 60 * 60 * 1000,        // 1 day
+    sameSite: "none",
+    secure: true,
+    maxAge: 24 * 60 * 60 * 1000
 };
 
 function makeToken(user) {
@@ -40,14 +40,17 @@ const url = process.env.MONGO_URL;
 
 const app = express();
 
-// app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
-    credentials: true,
-  }));
 
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "https://zerodha-clone-frontend-zj8o.onrender.com"
+    ],
+    credentials: true
+}));
 
 // app.get('/addHoldings', async(req, res) => {  // This route is used to add sample holdings data to the database. It creates an array of holdings objects and saves each one to the database using the HoldingsModel.
 //     let tempHoldings =  [

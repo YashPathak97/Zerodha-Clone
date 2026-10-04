@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Pricing() {
     return ( 
@@ -10,7 +11,7 @@ function Pricing() {
                        price transparency in India. Flat fees and no hidden changes.
                     </p>
                     <div>
-                        <a href='/pricing' style={{textDecoration: 'none'}}>See pricing <i className="fas fa-long-arrow-alt-right"></i></a>
+                        <Link className="mx-5" style={{textDecoration:'none'}} to='/product'>See pricing <i className="fas fa-long-arrow-alt-right"></i></Link>
                     </div>
                 </div>
 
