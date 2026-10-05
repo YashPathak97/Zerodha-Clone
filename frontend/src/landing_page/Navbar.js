@@ -190,3 +190,6 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+//Navbar are made in general file
